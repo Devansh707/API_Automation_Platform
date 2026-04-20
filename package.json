@@ -1,0 +1,38 @@
+{
+  "name": "api-automation-playwright",
+  "version": "1.0.0",
+  "description": "API Automation framework using Playwright + TypeScript with Docker and Jenkins CI/CD",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --project=smoke",
+    "test:sanity": "playwright test --project=sanity",
+    "test:integration": "playwright test --project=integration",
+    "test:regression": "playwright test --project=regression",
+    "test:posts": "playwright test tests/posts/",
+    "test:users": "playwright test tests/users/",
+    "test:comments": "playwright test tests/comments/",
+    "test:ci": "playwright test --reporter=html,junit",
+    "test:allure": "ALLURE_RESULTS=true playwright test --reporter=allure-playwright",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "allure-playwright": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

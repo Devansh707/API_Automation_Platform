@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Test reports
+playwright-report/
+allure-results/
+allure-report/
+reports/*.xml
+
+# Environment files (never commit real secrets)
+.env
+.env.staging
+.env.production
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+*.log
+npm-debug.log*
+
+.claude/
