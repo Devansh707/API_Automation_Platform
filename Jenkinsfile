@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'mcr.microsoft.com/playwright:v1.44.0-jammy'
-            args  '--user root -v /tmp:/tmp'
-        }
-    }
+    agent any
 
     environment {
         NODE_ENV   = 'ci'

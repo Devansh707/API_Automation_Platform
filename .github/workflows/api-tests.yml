@@ -1,0 +1,52 @@
+name: API Tests CI/CD
+
+on:
+  push:
+    branches: ["main", "develop"]
+  pull_request:
+    branches: ["main", "develop"]
+  workflow_dispatch:
+  schedule:
+    - cron: "30 2 * * *"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [smoke, sanity, integration, regression]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create env file
+        run: cp .env.example .env
+
+      - name: Lint + Typecheck
+        run: |
+          npm run lint
+          npm run typecheck
+
+      - name: Run ${{ matrix.suite }} suite
+        run: npx playwright test --project=${{ matrix.suite }}
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ matrix.suite }}
+          path: |
+            playwright-report/
+            test-results/

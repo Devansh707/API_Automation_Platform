@@ -1,7 +1,7 @@
 # API Automation — Playwright + TypeScript
 
 End-to-end API automation framework testing [JSONPlaceholder](https://jsonplaceholder.typicode.com)
-using Playwright's `APIRequestContext`, TypeScript, Docker, and Jenkins CI/CD.
+using Playwright's `APIRequestContext`, TypeScript, and Jenkins CI/CD.
 
 ## Stack
 
@@ -12,7 +12,6 @@ using Playwright's `APIRequestContext`, TypeScript, Docker, and Jenkins CI/CD.
 | dotenv | Environment configuration |
 | ESLint + Prettier | Code quality |
 | Allure | Optional rich HTML reporting |
-| Docker | Containerised test runner |
 | Jenkins | CI/CD pipeline |
 
 ---
@@ -57,26 +56,6 @@ npx playwright show-report
 
 ---
 
-## Run with Docker
-
-```bash
-# Build and run all tests
-docker compose up api-tests
-
-# Run specific suites
-docker compose up api-tests-smoke
-docker compose up api-tests-sanity
-docker compose up api-tests-integration
-docker compose up api-tests-regression
-
-# Start Allure server on http://localhost:5050
-docker compose --profile allure up allure-report
-```
-
-Reports are written to `./playwright-report/` and `./reports/` on your host machine via volume mounts.
-
----
-
 ## Environment Configuration
 
 | Variable | Default | Description |
@@ -118,7 +97,7 @@ config/
 
 ## CI / Jenkins
 
-The `Jenkinsfile` defines a declarative pipeline running on `mcr.microsoft.com/playwright:v1.44.0-jammy`:
+The `Jenkinsfile` defines a declarative pipeline:
 
 | Stage | Purpose |
 |---|---|

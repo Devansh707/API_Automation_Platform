@@ -1,7 +1,7 @@
 {
   "name": "api-automation-playwright",
   "version": "1.0.0",
-  "description": "API Automation framework using Playwright + TypeScript with Docker and Jenkins CI/CD",
+  "description": "API Automation framework using Playwright + TypeScript with Jenkins CI/CD",
   "scripts": {
     "test": "playwright test",
     "test:smoke": "playwright test --project=smoke",
