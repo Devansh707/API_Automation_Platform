@@ -34,6 +34,7 @@ export class ApiAssertions {
   // That tells you EXACTLY what went wrong without opening the reporter.
   // ---------------------------------------------------------------------------
   static async assertStatus(response: APIResponse, expectedStatus: number): Promise<void> {
+    await Promise.resolve();
     expect(
       response.status(),
       `Expected HTTP ${expectedStatus} but got ${response.status()} for ${response.url()}`

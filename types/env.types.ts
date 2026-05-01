@@ -20,6 +20,7 @@
 //       (a file with imports/exports). Without it, `declare global` wouldn't work.
 // =============================================================================
 
+/* eslint-disable @typescript-eslint/no-namespace */
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
